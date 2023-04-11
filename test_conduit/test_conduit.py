@@ -16,10 +16,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 class TestConduit(object):
 
     def setup(self):
-        service = Service(executable_path=ChromeDriverManager().install())
         options = Options()
         options.add_experimental_option("detach", True)
-        self.browser = webdriver.Chrome(service=service, options=options)
+        self.browser = webdriver.Chrome(ChromeDriverManager().install(), options=options)
         self.browser.get(URL)
         self.browser.maximize_window()
         time.sleep(1)
