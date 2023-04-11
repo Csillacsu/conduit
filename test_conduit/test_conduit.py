@@ -18,6 +18,7 @@ class TestConduit(object):
     def setup(self):
         options = Options()
         options.add_experimental_option("detach", True)
+        options.headless = True
         self.browser = webdriver.Chrome(ChromeDriverManager().install(), options=options)
         self.browser.get(URL)
         self.browser.maximize_window()
