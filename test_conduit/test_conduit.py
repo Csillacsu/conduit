@@ -51,14 +51,16 @@ class TestConduit(object):
         time.sleep(8)
         assert self.browser.find_element(By.XPATH, "//a[@active-class='active'][@class='nav-link']").is_displayed()
 
-"""
+
     #Kijelentkezés
     def test_logout(self):
         sign_in(self.browser)
-        time.sleep(1)
+        time.sleep(8)
         self.browser.find_element(By.XPATH, "//a[@active-class='active'][@class='nav-link']").click()
-        time.sleep(1)
+        time.sleep(8)
         assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed() == True
+
+"""
 
     #Adatok listázása
     def test_data_list(self):
