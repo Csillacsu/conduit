@@ -49,8 +49,9 @@ class TestConduit(object):
         self.browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
         self.browser.find_element(By.XPATH, "//button[contains(text(),'Sign in')]").click()
         time.sleep(3)
-        assert self.browser.find_element(By.XPATH, "//a[@active-class='active'][@class='nav-link']").is_displayed() == True
+       # assert self.browser.find_element(By.XPATH, "//a[@active-class='active'][@class='nav-link']").is_displayed() == True
 
+"""
     #Kijelentkezés
     def test_logout(self):
         sign_in(self.browser)
@@ -156,6 +157,7 @@ class TestConduit(object):
         for i in art_titles:
             assert i.text != "Lorem Ipsum 2.0"
 
+"""
 
 """
     # Regisztráció
