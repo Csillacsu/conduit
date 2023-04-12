@@ -58,7 +58,9 @@ class TestConduit(object):
         time.sleep(8)
         self.browser.find_element(By.XPATH, "//a[@active-class='active'][@class='nav-link']").click()
         time.sleep(8)
-        assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed() == True
+        login_button = self.browser.find_element(By.XPATH, "//a[@href='#/login']")
+        assert login_button.is_displayed()
+       #  assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed()
 
 """
 
