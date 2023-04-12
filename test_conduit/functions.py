@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import csv
 from webdriver_manager.chrome import ChromeDriverManager
 
-URL = 'http://localhost:1667'
+URL = 'http://localhost:1667/'
 
 
 def sign_in(browser):

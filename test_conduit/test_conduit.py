@@ -19,7 +19,7 @@ class TestConduit(object):
         service = Service(executable_path=ChromeDriverManager().install())
         options = Options()
         options.add_experimental_option("detach", True)
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         self.browser = webdriver.Chrome(service=service, options=options)
@@ -63,7 +63,6 @@ class TestConduit(object):
         assert login_button.is_displayed()
        #  assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed()
 
-"""
 
     #Adatok listázása
     def test_data_list(self):
@@ -162,7 +161,7 @@ class TestConduit(object):
         for i in art_titles:
             assert i.text != "Lorem Ipsum 2.0"
 
-"""
+
 
 """
     # Regisztráció
