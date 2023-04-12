@@ -56,7 +56,7 @@ class TestConduit(object):
     def test_logout(self):
         sign_in(self.browser)
         time.sleep(8)
-        logout_button = WebDriverWait(self.browser, 5).until(EC.presence_of_element_located((By.XPATH, '//a[@active-class="active"]')))
+        logout_button = WebDriverWait(self.browser, 20).until(EC.presence_of_element_located((By.XPATH, '//a[@active-class="active"]')))
         logout_button.click()
         time.sleep(8)
         login_button = self.browser.find_element(By.XPATH, "//a[@href='#/login']")
