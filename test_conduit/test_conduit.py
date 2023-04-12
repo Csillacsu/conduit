@@ -49,7 +49,7 @@ class TestConduit(object):
         self.browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
         self.browser.find_element(By.XPATH, "//button[contains(text(),'Sign in')]").click()
         time.sleep(8)
-        logout_button = self.browser.find_element(By.XPATH, "//a[@active-class='active' and @class='nav-link']")
+        logout_button = self.browser.find_element(By.XPATH, "//a[@href='#/settings']")
         assert logout_button.is_displayed()
 """
     #Kijelentkezés
