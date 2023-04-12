@@ -56,7 +56,8 @@ class TestConduit(object):
     def test_logout(self):
         sign_in(self.browser)
         time.sleep(8)
-        self.browser.find_element(By.XPATH, '//a[@active-class="active"]').click()
+        logout_button = self.browser.find_element(By.XPATH, '//a[@active-class="active"]')
+        logout_button.click()
         time.sleep(8)
         login_button = self.browser.find_element(By.XPATH, "//a[@href='#/login']")
         assert login_button.is_displayed()
