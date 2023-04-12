@@ -16,14 +16,16 @@ from webdriver_manager.chrome import ChromeDriverManager
 class TestConduit(object):
 
     def setup(self):
+        service = Service(executable_path=ChromeDriverManager().install())
         options = Options()
         options.add_experimental_option("detach", True)
-        options.headless = True
-        self.browser = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        self.browser = webdriver.Chrome(service=service, options=options)
+        URL = "http://localhost:1667/"
         self.browser.get(URL)
         self.browser.maximize_window()
-        time.sleep(1)
-
     def teardown(self):
         self.browser.quit()
 
@@ -35,6 +37,7 @@ class TestConduit(object):
     def test_accept_cookies(self):
         self.browser.find_element(By.XPATH, "//div[contains(text(), ' I accept!')]").click()
         time.sleep(1)
+        assert len(self.browser.find_elements(By.ID, 'cookie-policy-panel')) == 0
 
 
 
