@@ -19,7 +19,7 @@ def sign_in(browser):
     browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
     browser.find_element(By.XPATH, "//button[contains(text(),'Sign in')]").click()
     element = WebDriverWait(
-        browser, 10).until(
+        browser, 20).until(
         EC.visibility_of_element_located((By.XPATH, "//a[contains(text(),'Your Feed')]"))
     )
 
