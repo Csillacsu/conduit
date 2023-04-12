@@ -15,7 +15,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 class TestConduit(object):
 
-    def setup(self):
+    def setup_method(self):
         service = Service(executable_path=ChromeDriverManager().install())
         options = Options()
         options.add_experimental_option("detach", True)
@@ -26,7 +26,7 @@ class TestConduit(object):
         URL = "http://localhost:1667/"
         self.browser.get(URL)
         self.browser.maximize_window()
-    def teardown(self):
+    def teardown_method(self):
         self.browser.quit()
 
     def test_home_page_appearances(self):
