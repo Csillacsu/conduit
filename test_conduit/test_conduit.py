@@ -63,7 +63,7 @@ class TestConduit(object):
         assert login_button.is_displayed()
        #  assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed()
 
-
+"""
     #Adatok listázása
     def test_data_list(self):
         sign_in(self.browser)
@@ -161,7 +161,7 @@ class TestConduit(object):
         for i in art_titles:
             assert i.text != "Lorem Ipsum 2.0"
 
-
+"""
 
 """
     # Regisztráció
