@@ -17,9 +17,9 @@ def sign_in(browser):
     browser.find_element(By.XPATH, "//input[@placeholder='Email']").send_keys("avokado02@blabla.com")
     browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
     browser.find_element(By.XPATH, "//button[contains(text(),'Sign in')]").click()
-    time.sleep(8)
-    # element = WebDriverWait(browser, 20).until(
-    #    EC.visibility_of_element_located((By.XPATH, "//a[contains(text(),'Your Feed')]")))
+    time.sleep(5)
+    element = WebDriverWait(browser, 5).until(
+        EC.visibility_of_element_located((By.XPATH, "//a[contains(text(),'Your Feed')]")))
 
 
 def wait_for_element(browser, value):

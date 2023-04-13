@@ -59,7 +59,6 @@ class TestConduit(object):
         self.browser.find_element(By.XPATH, "//input[@placeholder='Email']").send_keys("avokado02@blabla.com")
         self.browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
         self.browser.find_element(By.XPATH, "//button[contains(text(),'Sign in')]").click()
-        # time.sleep(8)
         logout_btn = wait_for_element(self.browser, "//a[@active-class='active']")
         assert logout_btn.is_displayed()
 
@@ -73,7 +72,6 @@ class TestConduit(object):
         time.sleep(2)
         login_button = self.browser.find_element(By.XPATH, "//a[@href='#/login']")
         assert login_button.is_displayed()
-        # assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed()
 
     #Adatok listázása
     def test_data_list(self):
