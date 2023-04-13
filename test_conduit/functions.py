@@ -23,5 +23,5 @@ def sign_in(browser):
 
 
 def wait_for_element(browser, value):
-    element = WebDriverWait(browser, 5).until(EC.visibility_of_element_located((By.XPATH, value)))
+    element = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.XPATH, value)))
     return element

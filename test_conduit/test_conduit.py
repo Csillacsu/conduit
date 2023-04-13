@@ -46,8 +46,9 @@ class TestConduit(object):
         self.browser.find_element(By.XPATH, "//input[@placeholder='Email']").send_keys("avokado02@blabla.com")
         self.browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
         self.browser.find_element(By.XPATH, "//button[contains(text(),'Sign in')]").click()
-        time.sleep(8)
-        assert self.browser.find_element(By.XPATH, "//a[@active-class='active'][@class='nav-link']").is_displayed()
+        # time.sleep(8)
+        logout_btn = wait_for_element(self.browser, "//a[@active-class='active']")
+        assert logout_btn.is_displayed()
 
     # Kijelentkezés
     def test_logout(self):
