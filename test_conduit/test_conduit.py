@@ -54,7 +54,7 @@ class TestConduit(object):
         sign_in(self.browser)
         time.sleep(8)
         # logout_button = self.browser.find_element(By.XPATH, '//i[@class="ion-android-exit"]')
-        logout_button = WebDriverWait(self.browser, 5).until(EC.presence_of_element_located((By.XPATH, '//a[@active-class="active"]')))
+        logout_button = wait_for_element(self.browser, '//a[@active-class="active"]')
         logout_button.click()
         time.sleep(8)
         login_button = self.browser.find_element(By.XPATH, "//a[@href='#/login']")
