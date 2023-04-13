@@ -111,7 +111,7 @@ class TestConduit(object):
         time.sleep(3)
         assert self.browser.find_element(By.XPATH, "//h1[contains(text(), 'Lorem Ipsum 2.0')]").is_displayed() == True
 
-"""
+
     # Ismételt és sorozatos adatbevitel adatforrásból
     def test_new_comments(self):
         sign_in(self.browser)
@@ -131,6 +131,7 @@ class TestConduit(object):
                 for i in comments_:
                     assert comments_[0].text == row[0]
 
+"""
     # Adatok lementése felületről - Global feed bejegyzések címei
     def test_save_data(self):
         sign_in(self.browser)
