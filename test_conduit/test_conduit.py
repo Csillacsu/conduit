@@ -19,7 +19,7 @@ class TestConduit(object):
         service = Service(executable_path=ChromeDriverManager().install())
         options = Options()
         options.add_experimental_option("detach", True)
-        options.add_argument('--headless')
+        #options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         self.browser = webdriver.Chrome(service=service, options=options)
@@ -32,6 +32,19 @@ class TestConduit(object):
     def test_home_page_appearances(self):
         time.sleep(1)
         assert self.browser.find_element(By.XPATH, "//h1[text()='conduit']").text == "conduit"
+
+
+    # Regisztráció
+    def test_sign_up(self):
+        self.browser.find_element(By.XPATH, "//a[@href='#/register']").click()
+        self.browser.find_element(By.XPATH, "//input[@placeholder='Username']").send_keys("avokado02")
+        self.browser.find_element(By.XPATH, "//input[@placeholder='Email']").send_keys("avokado02@blabla.com")
+        self.browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
+        self.browser.find_element(By.XPATH, "//button[contains(text(), 'Sign up')]").click()
+        element = wait_for_element(self.browser, "//div[contains(text(), 'Your registration was successful!')]")
+        assert element.text == "Your registration was successful!"
+        self.browser.find_element(By.XPATH, "//button[contains(text(), 'OK')]").click()
+
 
     # Adatkezelési nyilatkozat használata
     def test_accept_cookies(self):
@@ -53,11 +66,11 @@ class TestConduit(object):
     # Kijelentkezés
     def test_logout(self):
         sign_in(self.browser)
-        time.sleep(8)
+        time.sleep(2)
         # logout_button = self.browser.find_element(By.XPATH, '//i[@class="ion-android-exit"]')
         logout_button = wait_for_element(self.browser, '//a[@active-class="active"]')
         logout_button.click()
-        time.sleep(8)
+        time.sleep(2)
         login_button = self.browser.find_element(By.XPATH, "//a[@href='#/login']")
         assert login_button.is_displayed()
         # assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed()
@@ -170,7 +183,7 @@ class TestConduit(object):
         self.browser.find_element(By.XPATH, "//input[@placeholder='Email']").send_keys("avokado02@blabla.com")
         self.browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
         self.browser.find_element(By.XPATH, "//button[contains(text(), 'Sign up')]").click()
-        element = wait_for_element(self.driver, "//div[contains(text(), 'Your registration was successful!')]")
+        element = wait_for_element(self.browser, "//div[contains(text(), 'Your registration was successful!')]")
         assert element.text == "Your registration was successful!"
         self.browser.find_element(By.XPATH, "//button[contains(text(), 'OK')]").click()
 """
