@@ -131,7 +131,6 @@ class TestConduit(object):
                 for i in comments_:
                     assert comments_[0].text == row[0]
 
-"""
     # Adatok lementése felületről - Global feed bejegyzések címei
     def test_save_data(self):
         sign_in(self.browser)
@@ -175,7 +174,7 @@ class TestConduit(object):
         for i in art_titles:
             assert i.text != "Lorem Ipsum 2.0"
 
-"""
+
 
 """
     # Regisztráció
