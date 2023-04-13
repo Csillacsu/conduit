@@ -120,7 +120,7 @@ class TestConduit(object):
         self.browser.find_element(By.XPATH, "//h1[contains(text(), 'Lorem Ipsum 2.0')]").click()
         time.sleep(1)
         textbox = self.browser.find_element(By.XPATH, "//textarea")
-        with open('comments.csv', 'r', encoding='utf-8') as f:
+        with open('test_conduit/comments.csv', 'r', encoding='utf-8') as f:
             csvreader = csv.reader(f, delimiter=',')
             next(csvreader)
             for row in csvreader:
