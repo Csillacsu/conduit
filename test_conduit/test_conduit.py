@@ -75,7 +75,6 @@ class TestConduit(object):
         assert login_button.is_displayed()
         # assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed()
 
-"""
     #Adatok listázása
     def test_data_list(self):
         sign_in(self.browser)
@@ -85,6 +84,7 @@ class TestConduit(object):
             titles_of_articles.append(i.text)
         assert len(titles_of_articles) == len(art_titles)
 
+"""
     #Új adatbevitel
     def test_new_post(self):
         sign_in(self.browser)
