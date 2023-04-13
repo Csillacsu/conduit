@@ -103,7 +103,6 @@ class TestConduit(object):
         last_post = titles[-1]
         assert "Lorem Ipsum 2.0" == last_post.text
 
-"""
     #Több oldalas lista bejárása
     def test_pages(self):
         sign_in(self.browser)
@@ -112,6 +111,7 @@ class TestConduit(object):
         time.sleep(3)
         assert self.browser.find_element(By.XPATH, "//h1[contains(text(), 'Lorem Ipsum 2.0')]").is_displayed() == True
 
+"""
     # Ismételt és sorozatos adatbevitel adatforrásból
     def test_new_comments(self):
         sign_in(self.browser)
