@@ -84,7 +84,7 @@ class TestConduit(object):
             titles_of_articles.append(i.text)
         assert len(titles_of_articles) == len(art_titles)
 
-"""
+
     #Új adatbevitel
     def test_new_post(self):
         sign_in(self.browser)
@@ -103,6 +103,7 @@ class TestConduit(object):
         last_post = titles[-1]
         assert "Lorem Ipsum 2.0" == last_post.text
 
+"""
     #Több oldalas lista bejárása
     def test_pages(self):
         sign_in(self.browser)
