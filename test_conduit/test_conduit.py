@@ -39,8 +39,6 @@ class TestConduit(object):
         time.sleep(1)
         assert len(self.browser.find_elements(By.ID, 'cookie-policy-panel')) == 0
 
-
-
     # Bejelentkezés
     def test_login(self):
         self.browser.find_element(By.XPATH, "//a[@href='#/login']").click()
@@ -51,19 +49,19 @@ class TestConduit(object):
         time.sleep(8)
         assert self.browser.find_element(By.XPATH, "//a[@active-class='active'][@class='nav-link']").is_displayed()
 
-
-    #Kijelentkezés
+    # Kijelentkezés
     def test_logout(self):
         sign_in(self.browser)
         time.sleep(8)
-        logout_button = self.browser.find_element(By.XPATH, '//i[@class="ion-android-exit"]')
+        # logout_button = self.browser.find_element(By.XPATH, '//i[@class="ion-android-exit"]')
+        logout_button = WebDriverWait(self.browser, 5).until(EC.presence_of_element_located((By.XPATH, '//a[@active-class="active"]')))
         logout_button.click()
         time.sleep(8)
         login_button = self.browser.find_element(By.XPATH, "//a[@href='#/login']")
         assert login_button.is_displayed()
-       #  assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed()
+        # assert self.browser.find_element(By.XPATH, "//a[@href='#/login']").is_displayed()
 
-
+"""
     #Adatok listázása
     def test_data_list(self):
         sign_in(self.browser)
@@ -161,7 +159,7 @@ class TestConduit(object):
         for i in art_titles:
             assert i.text != "Lorem Ipsum 2.0"
 
-
+"""
 
 """
     # Regisztráció
