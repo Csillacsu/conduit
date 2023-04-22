@@ -1,6 +1,5 @@
 import time
 
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -26,13 +25,13 @@ class TestConduit(object):
         URL = "http://localhost:1667/"
         self.browser.get(URL)
         self.browser.maximize_window()
+
     def teardown_method(self):
         self.browser.quit()
 
     def test_home_page_appearances(self):
         time.sleep(1)
         assert self.browser.find_element(By.XPATH, "//h1[text()='conduit']").text == "conduit"
-
 
     # Regisztráció
     def test_sign_up(self):
@@ -44,7 +43,6 @@ class TestConduit(object):
         element = wait_for_element(self.browser, "//div[contains(text(), 'Your registration was successful!')]")
         assert element.text == "Your registration was successful!"
         self.browser.find_element(By.XPATH, "//button[contains(text(), 'OK')]").click()
-
 
     # Adatkezelési nyilatkozat használata
     def test_accept_cookies(self):
@@ -73,7 +71,7 @@ class TestConduit(object):
         login_button = self.browser.find_element(By.XPATH, "//a[@href='#/login']")
         assert login_button.is_displayed()
 
-    #Adatok listázása
+    # Adatok listázása
     def test_data_list(self):
         sign_in(self.browser)
         art_titles = self.browser.find_elements(By.XPATH, "//h1")
@@ -82,16 +80,17 @@ class TestConduit(object):
             titles_of_articles.append(i.text)
         assert len(titles_of_articles) == len(art_titles)
 
-
-    #Új adatbevitel
+    # Új adatbevitel
     def test_new_post(self):
         sign_in(self.browser)
         self.browser.find_element(By.XPATH, "//a[@href='#/editor']").click()
         time.sleep(1)
         self.browser.find_element(By.XPATH, '//input[@placeholder="Article Title"]').send_keys(
             "Lorem Ipsum 2.0")
-        self.browser.find_element(By.XPATH, '//input[@placeholder="What\'s this article about?"]').send_keys("Egy szöveg")
-        self.browser.find_element(By.XPATH, "//textarea[@placeholder='Write your article (in markdown)']").send_keys("lorem")
+        self.browser.find_element(By.XPATH, '//input[@placeholder="What\'s this article about?"]').send_keys(
+            "Egy szöveg")
+        self.browser.find_element(By.XPATH, "//textarea[@placeholder='Write your article (in markdown)']").send_keys(
+            "lorem")
         self.browser.find_element(By.XPATH, "//input[@placeholder='Enter tags']").send_keys("ipsum")
         self.browser.find_element(By.XPATH, "//button[contains(text(),'Publish Article')]").click()
         time.sleep(3)
@@ -101,14 +100,13 @@ class TestConduit(object):
         last_post = titles[-1]
         assert "Lorem Ipsum 2.0" == last_post.text
 
-    #Több oldalas lista bejárása
+    # Több oldalas lista bejárása
     def test_pages(self):
         sign_in(self.browser)
         time.sleep(3)
         self.browser.find_element(By.XPATH, "//a[@class='page-link'][contains(text(),'2')]").click()
         time.sleep(3)
         assert self.browser.find_element(By.XPATH, "//h1[contains(text(), 'Lorem Ipsum 2.0')]").is_displayed() == True
-
 
     # Ismételt és sorozatos adatbevitel adatforrásból
     def test_new_comments(self):
@@ -146,7 +144,7 @@ class TestConduit(object):
                 assert row[0] == article_title
                 assert row[1] == preview
 
-    #Meglévő adat módosítása
+    # Meglévő adat módosítása
     def test_change_bio(self):
         sign_in(self.browser)
         time.sleep(1)
@@ -160,7 +158,7 @@ class TestConduit(object):
         time.sleep(1)
         assert self.browser.find_element(By.XPATH, "//textarea").get_attribute("value") == "Beírtam egy új szöveget"
 
-    #Adat törlése
+    # Adat törlése
     def test_delete_article(self):
         sign_in(self.browser)
         time.sleep(1)
@@ -171,20 +169,3 @@ class TestConduit(object):
         art_titles = self.browser.find_elements(By.XPATH, "//h1")
         for i in art_titles:
             assert i.text != "Lorem Ipsum 2.0"
-
-
-
-"""
-    # Regisztráció
-    def test_sign_up(self):
-        self.browser.find_element(By.XPATH, "//a[@href='#/register']").click()
-        self.browser.find_element(By.XPATH, "//input[@placeholder='Username']").send_keys("avokado02")
-        self.browser.find_element(By.XPATH, "//input[@placeholder='Email']").send_keys("avokado02@blabla.com")
-        self.browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
-        self.browser.find_element(By.XPATH, "//button[contains(text(), 'Sign up')]").click()
-        element = wait_for_element(self.browser, "//div[contains(text(), 'Your registration was successful!')]")
-        assert element.text == "Your registration was successful!"
-        self.browser.find_element(By.XPATH, "//button[contains(text(), 'OK')]").click()
-"""
-
-

@@ -12,7 +12,7 @@ URL = 'http://localhost:1667/'
 
 def sign_in(browser):
     browser.find_element(By.XPATH, "//a[@href='#/login']").click()
-    element = WebDriverWait(browser, 20).until(
+    element = WebDriverWait(browser, 5).until(
         EC.visibility_of_element_located((By.XPATH, "//h1[text() = 'Sign in']")))
     browser.find_element(By.XPATH, "//input[@placeholder='Email']").send_keys("avokado02@blabla.com")
     browser.find_element(By.XPATH, "//input[@placeholder='Password']").send_keys("Avokado02")
@@ -23,5 +23,5 @@ def sign_in(browser):
 
 
 def wait_for_element(browser, value):
-    element = WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.XPATH, value)))
+    element = WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.XPATH, value)))
     return element
