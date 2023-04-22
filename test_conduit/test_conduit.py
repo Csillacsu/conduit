@@ -64,7 +64,6 @@ class TestConduit(object):
     def test_logout(self):
         sign_in(self.browser)
         time.sleep(2)
-        # logout_button = self.browser.find_element(By.XPATH, '//i[@class="ion-android-exit"]')
         logout_button = wait_for_element(self.browser, '//a[@active-class="active"]')
         logout_button.click()
         time.sleep(2)
